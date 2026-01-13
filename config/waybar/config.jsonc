@@ -1,107 +1,89 @@
 {
-	"layer": "top",
-	"spacing": 0,
-	"height": 0,
-	"margin-top": 8,
-	"margin-right": 8,
-	"margin-bottom": 0,
-	"margin-left": 8,
+  "layer": "top",
+  "position":"top",
+  "spacing": 0,
+  "height": 0,
+  "margin-top": 0,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
 
-	"modules-left": [
-		"custom/launcher",
-		"hyprland/workspaces"
-	],
+  "modules-left": [ "custom/launcher", "hyprland/workspaces" ],
 
-	"modules-center": [
-		"clock"
-    ],
+  "modules-center": [ "battery", "clock" ],
 
-    "modules-right": [
-	    "hyprland/language",
-	    "cpu_text",
-	    "cpu",
-	    "memory",
-	    "battery",
-	    "network",
-	    "custom/control"
-    ],
+  "modules-right": [ "cpu", "memory", "network" ],
 
-    "custom/launcher":{
-	    "format": " ",
-	    "on-click": "~/bin/waybar/wofi.sh",
-	    "on-click-right": "killall rofi",
-	    "tooltip": false
-    },
+  "custom/launcher":{
+    "format": "   ",
+    "on-click": "~/bin/waybar/wofi.sh",
+    "on-click-right": "killall rofi",
+    "tooltip": false
+  },
 
-    "hyprland/workspaces": {
-	    "disable-scroll": true,
-	    "all-outputs": true,
-	    "tooltip": false
-    },
-
-    "tray": {
-	    "spacing": 10,
-	    "tooltip": false
-    },
-
-    "clock": {
-	    "format": "{:%H:%M - %a, %d %b %Y}",
-	    "tooltip": false
-    },
-
-    "cpu": {
-	    "format": "cpu {usage}%",
-	    "interval": 1,
-	    "states": {
-		    "critical": 90
-	    }
-    },
-
-    "memory": {
-	    "format": "mem {percentage}%",
-	    "interval": 1,
-
-	    "states": {
-		    "critical": 80
-	    }
-    },
-
-    "battery": {
-	    "format": "bat {capacity}%",
-	    "interval": 1,
-	    "states": {
-		    "warning": 20,
-		    "critical": 10
-	    },
-	    "tooltip": false
-    },
-
-    "network": {
-	    "format-wifi" : "wifi {bandwidthDownBits}",
-	    "format-ethernet": "enth {bandwidthDownBits}",
-	    "format-disconnected" : "no network",
-	    "interval": 1,
-	    "tooltip": false
-    },
-
-    "pulseaudio": {
-	    "scroll-step": 5,
-	    "max-volume": 150,
-	    "format": "vol {volume}%",
-	    "format-bluetooth": "vol {volume}%",
-	    "nospacing": 1,
-	    "on-click": "pwvucontrol",
-	    "tooltip": false
-    },
-
-    "hyprland/language": {
-	    "format": "{short}"
-    },
-
-    "custom/control":{
-	    "format": " ",
-	    "on-click": "control",
-	    "on-click-right": "killall control",
-	    "tooltip": false
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "sort-by-number": true,
+    "active-only": false,
+    "persistent-workspaces": { "*": 5 },
+    "show-special": false,
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "urgent": "",
+      "empty": ""
     }
+  },
+
+  "clock": {
+    "format": "{:%H:%M - %d %a}",
+    "tooltip": false
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "󰍛 {usage}%",
+    "format-alt": "{avg_frequency} GHz",
+    "states": { "warning": 70, "critical": 90 },
+    "tooltip": true,
+    "tooltip-format": "Usage: {usage}%\nFreq: {avg_frequency} GHz\nLoad: {load}"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {percentage}%",
+    "format-alt": "󰍛 {used:0.1f}G / {total:0.1f}G",
+    "states": { "warning": 70, "critical": 85 },
+    "tooltip": true,
+    "tooltip-format": "Used: {used:0.1f} GB\nAvailable: {avail:0.1f} GB\nTotal: {total:0.1f} GB"
+  },
+
+  "battery": {
+    "interval": 30,
+    "format": "{capacity}%",
+    "format-alt": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-plugged": "🔌 {capacity}% ",
+    "format-full": "󰁹 100%",
+    "format-icons": [ "󰁺",  "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    "states": { "warning": 20, "critical": 10 },
+    "tooltip": true,
+    "tooltip-format": "Charge: {capacity}%\nTime: {time}\nPower: {power} W"
+  },
+
+
+  "network": {
+    "interval": 2,
+    "format": "{ifname}",
+    "format-wifi": "{ipaddr} ↓{bandwidthDownBytes}",
+    "format-ethernet": "{ifname} ↓{bandwidthDownBytes}",
+    "format-disconnected": "no network",
+    "format-linked": "{ifname} (no IP)",
+    "format-alt": "{ipaddr}",
+    "tooltip": true,
+    "tooltip-format": "{ifname}\n{essid} {signalStrength}%\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}\n↑{bandwidthUpBits} ↓{bandwidthDownBits}"
+  }
 }
