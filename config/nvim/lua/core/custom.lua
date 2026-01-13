@@ -61,6 +61,8 @@ keymap.set("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>")
 keymap.set({ "n", "v" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
 keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+keymap.set("n", "<leader>gN", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
 ---------- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "toggle maximize tab" })

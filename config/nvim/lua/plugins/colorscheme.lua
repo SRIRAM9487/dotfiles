@@ -3,6 +3,6 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme cyberdream")
+		-- vim.cmd("colorscheme cyberdream")
 	end,
 }
