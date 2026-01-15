@@ -21,9 +21,8 @@ else
 	system_os = "linux"
 end
 
--- Needed for debugging
 local bundles = {
-	vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
+	vim.fn.glob("/home/sriram/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
 }
 
 -- Needed for running/debugging unit tests
@@ -107,7 +106,7 @@ local config = {
 				enabled = true,
 			},
 			references = {
-				includeDecompiledSources = true,
+				includeDecompiledSources = false,
 			},
 			signatureHelp = { enabled = true },
 			format = {
@@ -117,6 +116,7 @@ local config = {
 				--   url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
 				--   profile = "GoogleStyle",
 				-- },
+				--
 			},
 			completion = {
 				favoriteStaticMembers = {
@@ -124,11 +124,21 @@ local config = {
 					"org.junit.jupiter.api.Assertions.*",
 				},
 				importOrder = {
+					"java.util",
 					"java",
-					"com",
 					"org",
+					"com",
+					"javax",
+				},
+				filteredTypes = {
+					"com.sun.*",
+					"sun.*",
+					"jdk.*",
+					"java.awt.*",
+					"jdk.internal.*",
 				},
 			},
+
 			sources = {
 				organizeImports = {
 					starThreshold = 9999,
@@ -150,17 +160,16 @@ local config = {
 		allow_incremental_sync = true,
 	},
 	init_options = {
-		-- References the bundles defined above to support Debugging and Unit Testing
 		bundles = bundles,
 		extendedClientCapabilities = jdtls.extendedClientCapabilities,
+		-- References the bundles defined above to support Debugging and Unit Testing
 	},
 }
 
--- Needed for debugging
--- config["on_attach"] = function(client, bufnr)
--- 	jdtls.setup_dap({ hotcodereplace = "auto" })
--- 	require("jdtls.dap").setup_dap_main_class_configs()
--- end
+config["on_attach"] = function(client, bufnr)
+	jdtls.setup_dap({ hotcodereplace = "auto" })
+	require("jdtls.dap").setup_dap_main_class_configs()
+end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
 jdtls.start_or_attach(config)

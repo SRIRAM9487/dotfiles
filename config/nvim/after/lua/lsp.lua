@@ -29,3 +29,26 @@ vim.api.nvim_create_autocmd("FileType", {
 		require("jdtls.jdtls_setup").setup()
 	end,
 })
+
+-- Run psql only on .sql
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "sql",
+	callback = function(args)
+		require("postgres_lsp").setup()
+	end,
+})
+
+require("lspconfig").lemminx.setup({
+	settings = {
+		xml = {
+			format = { enabled = true },
+			validate = true,
+			schemas = {
+				{
+					fileMatch = { "pom.xml" },
+					uri = "https://maven.apache.org/xsd/maven-4.0.0.xsd",
+				},
+			},
+		},
+	},
+})

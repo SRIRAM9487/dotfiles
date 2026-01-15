@@ -19,7 +19,6 @@ return {
 				json = { "jq" },
 				yaml = { "prettierd" },
 				lua = { "stylua" },
-				xml = { "xmlformatter" },
 
 				java = { "google-java-format" },
 

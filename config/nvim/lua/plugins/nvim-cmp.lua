@@ -104,7 +104,7 @@ return {
 					},
 				}, -- text within current buffer
 				{ name = "path", priority = 8000 }, -- file system paths
-				-- { name = "luasnip", priority = 7000 }, -- snippets
+				{ name = "luasnip", priority = 7000 }, -- snippets
 			}),
 
 			------------------------------------------------------------------
