@@ -87,7 +87,7 @@ keymap.set("n", "<leader>tc", function()
 	end
 end)
 
-keymap.set("n", "<leader>tn", function()
+keymap.set("n", "<leader>tm", function()
 	if vim.bo.filetype == "java" then
 		require("jdtls").test_nearest_method()
 	end
