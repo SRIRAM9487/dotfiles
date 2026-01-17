@@ -8,3 +8,6 @@ vim
 nvim
 yazi
 zsh
+mpd
+hyprpaper
+swaync
