@@ -82,6 +82,9 @@ export JAVA_HOME=/opt/jdk-25.0.1/
 export INTELLIJ=/opt/idea-IU-252.25557.131
 export PATH=$JAVA_HOME/bin:$INTELLIJ/bin:$PATH
 
+# ---- SSH
+eval $(ssh-agent)
+ssh-add ~/.ssh/git 
 
 
 # ---- YAZI------
@@ -92,3 +95,4 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
