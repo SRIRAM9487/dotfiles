@@ -2,19 +2,25 @@ local home = vim.env.HOME
 local jdtls = require("jdtls")
 local root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml" })
 local project_name = vim.fn.fnamemodify(root_dir, ":t")
-local workspace_dir = home .. "/.local/jdtls-workspace/" .. project_name
-local system_os = "linux"
+local workspace_dir = home .. "/jdtls-workspace/" .. project_name
+local system_os = ""
+if vim.fn.has("mac") == 1 then
+	system_os = "mac"
+elseif vim.fn.has("unix") == 1 then
+	system_os = "linux"
+elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+	system_os = "win"
+else
+	print("OS not found, defaulting to 'linux'")
+	system_os = "linux"
+end
 
 local bundles = {
-	vim.fn.glob(home .. ".local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
+	vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
 }
-
--- Needed for running/debugging unit tests
 vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
 
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
-	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
 		"java",
@@ -40,10 +46,6 @@ local config = {
 		workspace_dir,
 	},
 
-	-- This is the default if not provided, you can remove it. Or adjust as needed.
-	-- One dedicated LSP server & client will be started per unique root_dir
-
-	-- Here you can configure eclipse.jdt.ls specific settings
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 	settings = {
 		java = {
@@ -72,7 +74,7 @@ local config = {
 					},
 					{
 						name = "JavaSE-21",
-						path = "/opt/jdk-21.0.8/",
+						path = "/opt/jdk-21.0.9/",
 					},
 				},
 			},
@@ -131,6 +133,18 @@ local config = {
 				},
 				useBlocks = true,
 			},
+			test = {
+				configurations = {
+					{
+						name = "JUnit",
+						runtime = "JavaSE-21",
+					},
+				},
+			},
+
+			inlayHints = {
+				parameterNames = { enabled = "all" },
+			},
 		},
 	},
 	-- Needed for auto-completion with method signatures and placeholders
@@ -142,14 +156,12 @@ local config = {
 	init_options = {
 		bundles = bundles,
 		extendedClientCapabilities = jdtls.extendedClientCapabilities,
-		-- References the bundles defined above to support Debugging and Unit Testing
 	},
 }
 
-config["on_attach"] = function(client, bufnr)
+config["on_attach"] = function(_, _)
 	jdtls.setup_dap({ hotcodereplace = "auto" })
 	require("jdtls.dap").setup_dap_main_class_configs()
 end
 
--- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
 jdtls.start_or_attach(config)
