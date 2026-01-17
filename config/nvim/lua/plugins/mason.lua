@@ -5,33 +5,38 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			local mason_lspconfig = require("mason-lspconfig")
-			mason_lspconfig.setup({
-				ensure_installed = { "html", "cssls", "tailwindcss", "lua_ls" },
-				automatic_enable = { exclude = { "jdtls" } },
-			})
-		end,
+		opts = {
+			ensure_installed = {
+				"html", -- HTML
+				"cssls", -- CSS
+				"ts_ls", -- JAVA SCRIPT
+				"tailwindcss", -- TAILWIND
+				"lua_ls", -- LUA
+				--- JAVA ---
+				"jdtls", -- LSP
+				--- XML ---
+				"lemminx", -- LSP
+			},
+		},
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		config = function()
-			local mason_tool_installer = require("mason-tool-installer")
-			mason_tool_installer.setup({
-				ensure_installed = {
-					-- FORMATTER
-					"prettierd",
-					"stylua",
-					"jq",
-					"gofumpt",
-					"google-java-format",
-					-- LINTER
-					"checkstyle",
-					"eslint_d",
-					"jsonlint",
-					"golangci-lint",
-				},
-			})
-		end,
+		opts = {
+			ensure_installed = {
+				-- FORMATTER
+				"prettierd",
+				"stylua",
+				"jq",
+				"google-java-format",
+				-- LINTER
+				"checkstyle",
+				"eslint_d",
+				"jsonlint",
+				-- TEST
+				"java-test",
+				-- DAP
+				"java-debug-adapter",
+			},
+		},
 	},
 }

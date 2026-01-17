@@ -11,3 +11,5 @@ zsh
 mpd
 hyprpaper
 swaync
+luacheck
+gcc

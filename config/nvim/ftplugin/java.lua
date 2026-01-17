@@ -1,28 +1,12 @@
--- JDTLS (Java LSP) configuration
-local home = vim.env.HOME -- Get the home directory
-
+local home = vim.env.HOME
 local jdtls = require("jdtls")
-
 local root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml" })
 local project_name = vim.fn.fnamemodify(root_dir, ":t")
-local workspace_dir = home .. "/jdtls-workspace/" .. project_name
-
-local system_os = ""
-
--- Determine OS
-if vim.fn.has("mac") == 1 then
-	system_os = "mac"
-elseif vim.fn.has("unix") == 1 then
-	system_os = "linux"
-elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	system_os = "win"
-else
-	print("OS not found, defaulting to 'linux'")
-	system_os = "linux"
-end
+local workspace_dir = home .. "/.local/jdtls-workspace/" .. project_name
+local system_os = "linux"
 
 local bundles = {
-	vim.fn.glob("/home/sriram/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
+	vim.fn.glob(home .. ".local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
 }
 
 -- Needed for running/debugging unit tests
@@ -89,10 +73,6 @@ local config = {
 					{
 						name = "JavaSE-21",
 						path = "/opt/jdk-21.0.8/",
-					},
-					{
-						name = "JavaSE-17",
-						path = "/opt/jdk-17.0.12/",
 					},
 				},
 			},

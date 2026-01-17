@@ -3,6 +3,11 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
+local function openTab()
+	vim.cmd("tabnew")
+	vim.cmd("Neotree toggle filesystem left reveal")
+end
+
 keymap.set("n", "<leader>hl", ":nohlsearch<CR>", { noremap = true, silent = true })
 
 -- Split management
@@ -27,7 +32,7 @@ keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
 keymap.set("n", "<leader>rw", "<C-w>x", { desc = "Swap with next window" })
 
 -- Tab management
-keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "open a new tab" })
+keymap.set("n", "<leader>to", openTab, { desc = "open a new tab" })
 keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "close a tab" })
 keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "next tab" })
 keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = " previous tab" })

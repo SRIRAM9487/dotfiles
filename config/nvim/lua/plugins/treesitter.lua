@@ -1,16 +1,15 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	event = "VeryLazy",
-	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-	build = ":TSUpdate",
-	opts = {
-		highlight = { enable = true },
-		indent = { enable = true },
-		auto_install = true,
-		ensure_installed = { "lua" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = { "java", "javadoc", "xml" },
+				auto_install = true,
+				highlight = { enable = true },
+			})
+		end,
 	},
-	config = function(_, opts)
-		local configs = require("nvim-treesitter.configs")
-		configs.setup(opts)
-	end,
 }

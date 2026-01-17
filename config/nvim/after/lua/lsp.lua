@@ -8,33 +8,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- Custom config for lua_ls
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = {
-				disable = {
-					"undefined-global",
-					"undefined-field",
-				},
-			},
-		},
-	},
-})
-
 -- Run jdtls only on .java
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "java",
-	callback = function(args)
+	callback = function(_)
 		require("jdtls.jdtls_setup").setup()
-	end,
-})
-
--- Run psql only on .sql
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "sql",
-	callback = function(args)
-		require("postgres_lsp").setup()
 	end,
 })
 

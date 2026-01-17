@@ -2,20 +2,14 @@ return {
 	"folke/todo-comments.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "nvim-lua/plenary.nvim" },
-
 	opts = {
 		signs = true,
 		sign_priority = 8,
-
 		keywords = {
 			TODO = { icon = " ", color = "info" },
 			REV = { icon = " ", color = "warning" },
-			WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-			TEST = {
-				icon = "⏲ ",
-				color = "test",
-				alt = { "TESTING", "PASSED", "FAILED" },
-			},
+			WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+			TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 		},
 
 		colors = {
