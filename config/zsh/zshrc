@@ -78,12 +78,17 @@ alias m="javac *.java && java Main"
 alias ta="tmux -u a"
 
 # --------- JAVA -----------
-# export JAVA_HOME=/opt/jdk-24.0.2
-#export JAVA_HOME=/opt/jdk-24.0.2
-# export JAVA_HOME=/opt/jdk-21.0.8
-#export JAVA_HOME=/opt/jdk-17.0.12
 export JAVA_HOME=/opt/jdk-25.0.1/
 export INTELLIJ=/opt/idea-IU-252.25557.131
 export PATH=$JAVA_HOME/bin:$INTELLIJ/bin:$PATH
 
 
+
+# ---- YAZI------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
