@@ -1,0 +1,67 @@
+window#waybar {
+  background: rgba(0, 0, 0, 0.5); /* Solidified for a sleek black look */
+  border: none;
+}
+
+/* Reduced margins and padding for all modules */
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#tray,
+#language {
+  background: rgba(40, 40, 40, 0.6); /* Gray shades */
+  border-radius: 4px;
+  padding: 1px 6px;           /* Tightened vertical padding */
+  margin: 3px 2px;           /* Halved the margins */
+  color: #ffffff;            /* High-contrast white */
+  font-size: 11px;           /* Smaller font saves horizontal space */
+}
+
+/* Slimmer Fixed Widths */
+#memory,
+#cpu {
+  min-width: 28px;
+}
+
+#network {
+  min-width: 35px;
+}
+
+/* Hover feedback - Subtle gray */
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#battery:hover,
+#clock:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Monochromatic Warning/Critical states */
+#cpu.warning, #memory.warning, #battery.warning {
+  color: #bbbbbb; /* Light Gray */
+}
+
+#cpu.critical, #memory.critical, #battery.critical {
+  border: 1px solid #ffffff; /* Use a border for alerts instead of color */
+}
+
+/* Compact Workspaces */
+#workspaces {
+  margin: 3px 2px;
+  padding: 0px 4px;
+  background: rgba(40, 40, 40, 0.6);
+  border-radius: 4px;
+}
+
+#workspaces button {
+  padding: 0 4px;
+  color: #888888; /* Dimmed gray for inactive */
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}

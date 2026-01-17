@@ -23,11 +23,11 @@ window#waybar {
 /* FIXED WIDTHS — key alignment fix */
 #memory,
 #cpu {
-  min-width: 64px;
+  min-width: 32px;
 }
 
 #network {
-  min-width: 120px;
+  min-width: 40px;
 }
 
 /* Hover feedback */
@@ -60,8 +60,6 @@ window#waybar {
   background: rgba(31, 28, 39, 0.35);
   border-radius: 6px;
 }
-
-/* Individual workspace buttons (NO boxes) */
 #workspaces button {
   padding: 0 6px;
 
@@ -72,19 +70,13 @@ window#waybar {
     color 0.15s ease,
     transform 0.1s ease;
 }
-
-/* Hover feedback */
 #workspaces button:hover {
   color: #ffffff;
 }
-
-/* Active workspace */
 #workspaces button.active {
   color: #ffffff;
   font-weight: 600;
 }
-
-/* Urgent workspace */
 #workspaces button.urgent {
   color: #e542c0;
 }
