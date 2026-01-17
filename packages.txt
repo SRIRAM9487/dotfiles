@@ -1,0 +1,10 @@
+ly
+hyprland
+swaync
+waybar
+kitty
+tmux
+vim
+nvim
+yazi
+zsh
