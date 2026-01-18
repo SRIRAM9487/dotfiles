@@ -13,3 +13,5 @@ hyprpaper
 swaync
 luacheck
 gcc
+mpv
+xdg-utils

@@ -6,8 +6,7 @@ sort_reverse 	 = false
 sort_dir_first = true
 sort_translit  = false
 linemode       = "none"
-# linemode       = "size_and_mtime"
-show_hidden    = true
+show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
@@ -30,12 +29,10 @@ edit = [
 	{ run = "${EDITOR:-nvim} %s", desc = "$EDITOR",      for = "unix", block = true }
 ]
 play = [
-	{ run = "xdg-open %s1",                desc = "Play", for = "linux" },
-	{ run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
+	{ run = "mpv %s1",                desc = "Play", for = "linux" },
 ]
 open = [
 	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
-	{ run = 'start "" %s1',    desc = "Open", for = "windows", orphan = true },
 ]
 reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },
@@ -43,10 +40,6 @@ reveal = [
 ]
 extract = [
 	{ run = "ya pub extract --list %s", desc = "Extract here" },
-]
-download = [
-	{ run = "ya emit download --open %S", desc = "Download and open" },
-	{ run = "ya emit download %S",        desc = "Download" },
 ]
 
 [open]
@@ -66,8 +59,6 @@ rules = [
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
 	# Empty file
 	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
-	# Virtual file system
-	{ mime = "vfs/{absent,stale}", use = "download" },
 	# Fallback
 	{ url = "*", use = [ "open", "reveal" ] },
 ]
