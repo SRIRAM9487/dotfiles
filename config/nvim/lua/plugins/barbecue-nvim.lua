@@ -29,7 +29,6 @@ return {
 			dirname = { fg = "#737aa2" },
 			basename = { bold = true },
 
-			-- single fallback for all context kinds
 			context = { fg = "#ac8fe4" },
 		},
 	},

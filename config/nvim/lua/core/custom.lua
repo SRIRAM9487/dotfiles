@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 local actions = require("utils.actions")
+local lsp = require("utils.lsp")
 
 ------ FORMATTER && LINTER
 keymap.set({ "n", "v" }, "<leader>mp", actions.format_code, { desc = "Format file or selected range" })
@@ -37,7 +38,7 @@ keymap.set("n", "<leader>gN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc 
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle maximize window" })
 
 ---------- Filetype-specific
-keymap.set("n", "<leader>go", actions.organize_imports, { desc = "Organize Java imports" })
-keymap.set("n", "<leader>gu", actions.update_projects_config, { desc = "Update project LSP config" })
-keymap.set("n", "<leader>tc", actions.test_current_class, { desc = "Run tests for current class" })
-keymap.set("n", "<leader>tm", actions.test_nearest_method, { desc = "Run nearest test method" })
+keymap.set("n", "<leader>go", lsp.organize_imports, { desc = "Organize Java imports" })
+keymap.set("n", "<leader>gu", lsp.update_projects_config, { desc = "Update project LSP config" })
+keymap.set("n", "<leader>tc", lsp.test_current_class, { desc = "Run tests for current class" })
+keymap.set("n", "<leader>tm", lsp.test_nearest_method, { desc = "Run nearest test method" })

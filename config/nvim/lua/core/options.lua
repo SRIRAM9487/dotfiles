@@ -1,12 +1,12 @@
 local opt = vim.opt
 
 -- Session Management
-opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Line Numbers
 opt.relativenumber = true
 opt.number = true
-opt.scrolloff=10;
+opt.scrolloff = 10
 opt.clipboard = "unnamedplus"
 
 -- Tabs & Indentation
@@ -31,9 +31,7 @@ opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 opt.showmode = false
-vim.diagnostic.config {
-  float = { border = "rounded" }, -- add border to diagnostic popups
-}
+-- vim.diagnostic.config({ float = { border = "rounded" } })
 
 -- Backspace
 opt.backspace = "indent,eol,start"
@@ -49,10 +47,9 @@ opt.splitbelow = true
 opt.iskeyword:append("-")
 
 -- Disable the mouse while in nvim
-opt.mouse = 'a'
+opt.mouse = "a"
 
 -- Folding
 opt.foldlevel = 20
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
-
+opt.foldexpr = "nvim_treesitter#foldexpr()"
