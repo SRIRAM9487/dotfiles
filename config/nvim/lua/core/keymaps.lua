@@ -36,3 +36,9 @@ keymap.set("n", "<leader>to", openTab, { desc = "open a new tab" })
 keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "close a tab" })
 keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "next tab" })
 keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = " previous tab" })
+
+-- Quick fix
+keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list" })
+keymap.set("n", "<leader>qx", ":cclose<CR>", { desc = "Close quickfix list" })
+keymap.set("n", "<C-n>", ":cnext<CR>", { desc = "Quickfix next item" })
+keymap.set("n", "<C-p>", ":cprev<CR>", { desc = "Quickfix previous item" })

@@ -19,6 +19,7 @@ keymap.set("n", "[t", actions.prev_todo, { desc = "Previous TODO comment" })
 ------ TELESCOPE
 keymap.set("n", "<leader>ff", actions.telescope_find_files, { desc = "Find files (project)" })
 keymap.set("n", "<leader>fm", actions.telescope_show_methods, { desc = "Show methods in current file" })
+keymap.set("n", "<leader>ft", actions.telescope_todo, { desc = "Show methods in current file" })
 
 ----------- LSP
 keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "LSP hover documentation" })
@@ -28,12 +29,11 @@ keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { des
 keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "Go to type definition" })
 keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "List references" })
 keymap.set("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" })
-keymap.set({ "n", "v" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format via LSP" })
-keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions" })
 keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics" })
 keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Next diagnostic" })
 keymap.set("n", "<leader>gN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Previous diagnostic" })
-
+keymap.set({ "n", "v" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format via LSP" })
+keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions" })
 ---------- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle maximize window" })
 
@@ -42,3 +42,8 @@ keymap.set("n", "<leader>go", lsp.organize_imports, { desc = "Organize Java impo
 keymap.set("n", "<leader>gu", lsp.update_projects_config, { desc = "Update project LSP config" })
 keymap.set("n", "<leader>tc", lsp.test_current_class, { desc = "Run tests for current class" })
 keymap.set("n", "<leader>tm", lsp.test_nearest_method, { desc = "Run nearest test method" })
+
+---------- Trouble
+keymap.set("n", "<leader>sd", actions.trouble_show_diagnostics, { desc = "Show all diagnostic" })
+keymap.set("n", "<leader>sb", actions.trouble_show_diagnostics_buffer, { desc = "Show current buffer diagnostic" })
+keymap.set("n", "<leader>st", actions.trouble_show_diagnostics_todo, { desc = "Show diagnostic in current buffer" })

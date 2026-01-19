@@ -20,6 +20,7 @@ function M.nvim_tree_toggle()
 end
 
 function M.nvim_tree_focus()
+	-- require("notify").
 	vim.cmd("Neotree focus filesystem left reveal")
 end
 
@@ -41,4 +42,20 @@ function M.telescope_show_methods()
 	require("telescope.builtin").treesitter({ symbols = { "function", "method" } })
 end
 
+function M.telescope_todo()
+	vim.cmd("TodoTelescope")
+end
+
+-- Trouble
+function M.trouble_show_diagnostics()
+	vim.cmd("Trouble diagnostics toggle")
+end
+
+function M.trouble_show_diagnostics_buffer()
+	vim.cmd("Trouble diagnostics toggle filter.buf=0")
+end
+
+function M.trouble_show_diagnostics_todo()
+	vim.cmd("Trouble todo")
+end
 return M

@@ -38,6 +38,9 @@ reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },
 	{ run = "clear; exiftool %s1; echo 'Press enter to exit'; read _", desc = "Show EXIF", for = "unix", block = true },
 ]
+pdf = [
+	{ run = "kitty",         desc = "Open", for = "linux" },
+]
 extract = [
 	{ run = "ya pub extract --list %s", desc = "Extract here" },
 ]
@@ -48,6 +51,8 @@ rules = [
 	{ url = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
+	# Pdf
+  { mime = "application/pdf", use = [ "pdf", "reveal" ] },
 	# Image
 	{ mime = "image/*", use = [ "open", "reveal" ] },
 	# Media
