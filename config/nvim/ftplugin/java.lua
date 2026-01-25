@@ -1,6 +1,12 @@
 local home = vim.env.HOME
 local jdtls = require("jdtls")
-local root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml" })
+local root_dir = require("jdtls.setup").find_root({
+	".git",
+	"settings.gradle",
+	"settings.gradle.kts",
+	"build.gradle",
+	"build.gradle.kts",
+})
 local project_name = vim.fn.fnamemodify(root_dir, ":t")
 local workspace_dir = home .. "/.local/jdtls-workspace/" .. project_name
 local system_os = ""
@@ -81,6 +87,14 @@ local config = {
 			maven = {
 				downloadSources = true,
 			},
+
+			gradle = {
+				enabled = true,
+				offline = false,
+				wrapper = {
+					enabled = true,
+				},
+			},
 			implementationsCodeLens = {
 				enabled = true,
 			},
@@ -116,7 +130,7 @@ local config = {
 					"com.sun.*",
 					"sun.*",
 					"jdk.*",
-					"java.awt.*",
+					-- "java.awt.*",
 					"jdk.internal.*",
 				},
 			},

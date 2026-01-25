@@ -11,11 +11,11 @@ return {
 			docker = { "hadolint" },
 		}
 		local augroup = vim.api.nvim_create_augroup("Linting", { clear = true })
-		vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
-			group = augroup,
-			callback = function()
-				lint.try_lint()
-			end,
-		})
+		-- vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
+		-- 	group = augroup,
+		-- 	callback = function()
+		-- 		lint.try_lint()
+		-- 	end,
+		-- })
 	end,
 }

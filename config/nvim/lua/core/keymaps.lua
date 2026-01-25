@@ -40,5 +40,5 @@ keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = " previous tab" })
 -- Quick fix
 keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list" })
 keymap.set("n", "<leader>qx", ":cclose<CR>", { desc = "Close quickfix list" })
-keymap.set("n", "<C-n>", ":cnext<CR>", { desc = "Quickfix next item" })
-keymap.set("n", "<C-p>", ":cprev<CR>", { desc = "Quickfix previous item" })
+keymap.set("n", "<leader>qn", ":cnext<CR>", { desc = "Quickfix next item" })
+keymap.set("n", "<leader>qp", ":cprev<CR>", { desc = "Quickfix previous item" })
