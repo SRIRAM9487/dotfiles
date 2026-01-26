@@ -20,7 +20,6 @@ function M.nvim_tree_toggle()
 end
 
 function M.nvim_tree_focus()
-	-- require("notify").
 	vim.cmd("Neotree focus filesystem left reveal")
 end
 

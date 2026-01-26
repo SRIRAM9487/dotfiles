@@ -9,13 +9,11 @@ return {
 			ensure_installed = {
 				"html", -- HTML
 				"cssls", -- CSS
-				"ts_ls", -- JAVA SCRIPT
 				"tailwindcss", -- TAILWIND
+				"ts_ls", -- JAVA SCRIPT
 				"lua_ls", -- LUA
-				--- JAVA ---
-				"jdtls", -- LSP
-				--- XML ---
-				"lemminx", -- LSP
+				"jdtls", --- JAVA
+				"lemminx", --- XML
 			},
 		},
 	},
@@ -23,17 +21,22 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
+
 				-- FORMATTER
 				"prettierd",
-				"stylua",
 				"jq",
 				"google-java-format",
+				"stylua",
+				"pgformatter",
+
 				-- LINTER
 				"checkstyle",
 				"eslint_d",
 				"jsonlint",
+
 				-- TEST
 				"java-test",
+
 				-- DAP
 				"java-debug-adapter",
 			},

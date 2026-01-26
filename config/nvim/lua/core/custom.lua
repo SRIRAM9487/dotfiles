@@ -5,8 +5,8 @@ local actions = require("utils.actions")
 local lsp = require("utils.lsp")
 
 ------ FORMATTER && LINTER
-keymap.set({ "n", "v" }, "<leader>mp", actions.format_code, { desc = "Format file or selected range" })
-keymap.set("n", "<leader>cl", actions.lint_code, { desc = "Run linters" })
+keymap.set({ "n", "v" }, "<leader>rf", actions.format_code, { desc = "Format file or selected range" })
+keymap.set("n", "<leader>rl", actions.lint_code, { desc = "Run linters" })
 
 ------ NVIM TREE
 keymap.set("n", "<leader>nt", actions.nvim_tree_toggle, { noremap = true, desc = "Toggle file explorer" })
@@ -34,6 +34,7 @@ keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc 
 keymap.set("n", "<leader>gN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Previous diagnostic" })
 keymap.set({ "n", "v" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format via LSP" })
 keymap.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions" })
+
 ---------- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle maximize window" })
 
@@ -44,6 +45,6 @@ keymap.set("n", "<leader>tc", lsp.test_current_class, { desc = "Run tests for cu
 keymap.set("n", "<leader>tm", lsp.test_nearest_method, { desc = "Run nearest test method" })
 
 ---------- Trouble
-keymap.set("n", "<leader>sd", actions.trouble_show_diagnostics, { desc = "Show all diagnostic" })
-keymap.set("n", "<leader>sb", actions.trouble_show_diagnostics_buffer, { desc = "Show current buffer diagnostic" })
-keymap.set("n", "<leader>st", actions.trouble_show_diagnostics_todo, { desc = "Show diagnostic in current buffer" })
+keymap.set("n", "<leader>td", actions.trouble_show_diagnostics, { desc = "Show all diagnostic" })
+keymap.set("n", "<leader>tb", actions.trouble_show_diagnostics_buffer, { desc = "Show current buffer diagnostic" })
+keymap.set("n", "<leader>tt", actions.trouble_show_diagnostics_todo, { desc = "Show diagnostic in current buffer" })
