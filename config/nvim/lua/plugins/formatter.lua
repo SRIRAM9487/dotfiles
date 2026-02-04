@@ -16,6 +16,7 @@ return {
 
 			java = { "google-java-format" },
 			yaml = { "prettierd" },
+			xml = { "xmlformatter" },
 
 			lua = { "stylua" },
 			json = { "jq" },

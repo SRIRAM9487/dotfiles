@@ -8,58 +8,20 @@
   "margin-bottom": 0,
   "margin-left": 0,
 
-  "modules-left": [ "custom/launcher", "hyprland/workspaces" ],
+  "modules-left": [ "hyprland/workspaces" ],
 
-  "modules-center": [ "battery", "clock" ],
+  "modules-center": [ "battery", "clock" , "pulseaudio"],
 
   "modules-right": [ "cpu", "memory", "network" ],
-
-  "custom/launcher":{
-    "format": "   ",
-    "on-click": "~/bin/waybar/wofi.sh",
-    "on-click-right": "killall rofi",
-    "tooltip": false
-  },
 
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "sort-by-number": true,
-    "active-only": false,
-    "persistent-workspaces": { "*": 5 },
-    "show-special": false,
-    "format-icons": {
-      "active": "",
-      "default": "",
-      "urgent": "",
-      "empty": ""
-    }
+    "persistent-workspaces": { "*": 5 }
   },
 
-  "clock": {
-    "format": "{:%H:%M - %d %a}",
-    "tooltip": false
-  },
-
-  "cpu": {
-    "interval": 2,
-    "format": "󰍛 {usage}%",
-    "format-alt": "{avg_frequency} GHz",
-    "states": { "warning": 70, "critical": 90 },
-    "tooltip": true,
-    "tooltip-format": "Usage: {usage}%\nFreq: {avg_frequency} GHz\nLoad: {load}"
-  },
-
-  "memory": {
-    "interval": 5,
-    "format": "󰍛 {percentage}%",
-    "format-alt": "󰍛 {used:0.1f}G / {total:0.1f}G",
-    "states": { "warning": 70, "critical": 85 },
-    "tooltip": true,
-    "tooltip-format": "Used: {used:0.1f} GB\nAvailable: {avail:0.1f} GB\nTotal: {total:0.1f} GB"
-  },
 
   "battery": {
     "interval": 30,
@@ -74,16 +36,43 @@
     "tooltip-format": "Charge: {capacity}%\nTime: {time}\nPower: {power} W"
   },
 
+  "clock": { "format": "{:%H:%M}", "format-alt": "{:%d-%a}", "tooltip": false },
+
+  "pulseaudio": {
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% ",
+      "format-muted": "[X]",
+      "scroll-step": 1,
+      "on-click": "~/.config/waybar/scripts/bluetooth.sh"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "[CPU] {usage}%",
+    "format-alt": "{avg_frequency} GHz",
+    "states": { "warning": 70, "critical": 90 },
+    "tooltip": true,
+    "tooltip-format": "Usage: {usage}%\nFreq: {avg_frequency} GHz\nLoad: {load}"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "[MEM] {percentage}%",
+    "format-alt": "{used:0.1f}G / {total:0.1f}G",
+    "states": { "warning": 70, "critical": 85 },
+    "tooltip": true,
+    "tooltip-format": "Used: {used:0.1f} GB\nAvailable: {avail:0.1f} GB\nTotal: {total:0.1f} GB"
+  },
+
 
   "network": {
     "interval": 2,
-    "format": "{ifname}",
-    "format-wifi": "{ipaddr} ↓{bandwidthDownBytes}",
-    "format-ethernet": "{ifname} ↓{bandwidthDownBytes}",
+    "format-wifi": "↓{bandwidthDownBytes}",
+    "format-ethernet": "{ifname}",
     "format-disconnected": "no network",
     "format-linked": "{ifname} (no IP)",
-    "format-alt": "{ipaddr}",
     "tooltip": true,
-    "tooltip-format": "{ifname}\n{essid} {signalStrength}%\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}\n↑{bandwidthUpBits} ↓{bandwidthDownBits}"
+    "tooltip-format": "{ifname}\n{essid} {signalStrength}%\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}\n↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+    "on-click": "~/.config/waybar/scripts/wifi.sh"
   }
 }

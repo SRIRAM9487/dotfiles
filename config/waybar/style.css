@@ -1,82 +1,144 @@
+/* =================================================
+   Waybar – Minimal Compact Theme
+   GTK CSS (colors only as variables)
+   ================================================= */
+
+/* ---------- Color Variables ---------- */
+
+@define-color bg rgba(46, 52, 64, 0.35);
+@define-color bg-hover rgba(136, 192, 208, 0.12);
+
+@define-color fg #d8dee9;
+@define-color fg-muted #81a1c1;
+
+@define-color accent #88c0d0;
+@define-color urgent #bf616a;
+
+@define-color warning #ebcb8b;
+@define-color critical #bf616a;
+
 window#waybar {
   background: transparent;
   border: none;
-  padding: 0px;
+  padding: 0;
+  font-size: 12px;
 }
 
-/* Common module styling */
-#clock,
-#cpu,
-#memory,
-#battery,
-#network,
-#pulseaudio,
-#tray,
-#language {
-  background: rgba(31, 28, 39, 0.35);
-  border-radius: 6px;
-  padding: 4px 8px;
-  margin: 6px 6px 6px 0;
-  color: #b6a0ff;
-}
-
-/* FIXED WIDTHS — key alignment fix */
-#memory,
-#cpu {
-  min-width: 32px;
-}
-
-#network {
-  min-width: 40px;
-}
-
-/* Hover feedback */
-#cpu:hover,
-#memory:hover,
-#network:hover,
-#battery:hover,
-#clock:hover {
-  background: rgba(182, 160, 255, 0.12);
-}
-
-/* Warning / critical coloring */
-#cpu.warning,
-#memory.warning,
-#battery.warning {
-  color: #f6c177;
-}
-
-#cpu.critical,
-#memory.critical,
-#battery.critical {
-  color: #eb6f92;
-}
-
-/* Workspace group container */
-#workspaces {
-  margin: 6px 0 6px 6px;
-  padding: 2px 6px;
-
-  background: rgba(31, 28, 39, 0.35);
-  border-radius: 6px;
-}
 #workspaces button {
-  padding: 0 6px;
-
-  color: #b6a0ff;
-  font-weight: 500;
-
-  transition:
-    color 0.15s ease,
-    transform 0.1s ease;
+  padding: 0 3px;
+  margin: 0;
+  font-weight: 200;
+  color: @fg-muted;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
+
 #workspaces button:hover {
-  color: #ffffff;
+  background: transparent;
+  border-top: 1px solid @accent;
+  border-radius: 0;
+  box-shadow: none;
+  color: @fg;
 }
+
 #workspaces button.active {
-  color: #ffffff;
+  background: transparent;
+  color: @accent;
   font-weight: 600;
 }
+
 #workspaces button.urgent {
-  color: #e542c0;
+  background: transparent;
+  border-top: 1px solid @urgent;
+  border-radius: 0;
+  color: @urgent;
+}
+
+#battery {
+  padding: 2px 5px;
+  color: @fg;
+}
+
+#battery:hover {
+  background: @bg-hover;
+}
+
+#battery.warning {
+  color: @warning;
+}
+
+#battery.critical {
+  color: @critical;
+}
+
+#clock {
+  padding: 2px 5px;
+  color: @fg;
+}
+
+#clock:hover {
+  background: @bg-hover;
+}
+
+#pulseaudio {
+  padding: 2px 2px;
+  color: white;
+}
+
+#pulseaudio:hover {
+  background: @bg-hover;
+}
+
+#cpu {
+  padding: 2px 5px;
+  color: @fg;
+}
+
+#cpu:hover {
+  background: @bg-hover;
+}
+
+#cpu.warning {
+  color: @warning;
+}
+
+#cpu.critical {
+  color: @critical;
+}
+
+/* =================================================
+   Memory
+   ================================================= */
+
+#memory {
+  padding: 2px 5px;
+  color: @fg;
+}
+
+#memory:hover {
+  background: @bg-hover;
+}
+
+#memory.warning {
+  color: @warning;
+}
+
+#memory.critical {
+  color: @critical;
+}
+
+/* =================================================
+   Network
+   ================================================= */
+
+#network {
+  padding: 2px 5px;
+  margin-right: 5px;
+  color: @fg;
+}
+
+#network:hover {
+  background: @bg-hover;
 }
