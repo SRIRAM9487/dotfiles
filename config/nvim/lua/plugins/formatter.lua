@@ -2,7 +2,6 @@ return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
-
 		formatters_by_ft = {
 
 			html = { "prettierd" },
@@ -16,12 +15,12 @@ return {
 
 			java = { "google-java-format" },
 			yaml = { "prettierd" },
-			xml = { "xmlformatter" },
+			c = { "clang-format" },
 
 			lua = { "stylua" },
 			json = { "jq" },
+			jsonc = { "jq" },
 			sql = { "pgformatter" },
 		},
-		format_on_save = { lsp_fallback = true, async = false, timeout_ms = 3000 },
 	},
 }

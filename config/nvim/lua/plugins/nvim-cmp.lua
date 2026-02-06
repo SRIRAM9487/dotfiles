@@ -28,6 +28,8 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		luasnip.config.setup({})
 
+		vim.api.nvim_set_hl(0, "CmpSel", { bg = "#313244", bold = true })
+
 		cmp.setup({
 			------------------------------------------------------------------
 			-- Enable / disable completion contextually
@@ -123,7 +125,7 @@ return {
 			------------------------------------------------------------------
 			formatting = {
 				format = lspkind.cmp_format({
-					mode = "symbol_text",
+					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "…",
 				}),
@@ -132,16 +134,41 @@ return {
 			------------------------------------------------------------------
 			-- Window appearance
 			------------------------------------------------------------------
+
 			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+				completion = cmp.config.window.bordered({
+					border = {
+						"󰐖",
+						"─",
+						"󰐘",
+						"│",
+						"󰐘",
+						"─",
+						"󰐖",
+						"│",
+					},
+					winhighlight = "Normal:CmpMenu,FloatBorder:CmpBorder,CursorLine:CmpSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					border = {
+						"󰐖",
+						"─",
+						"󰐘",
+						"│",
+						"󰐘",
+						"─",
+						"󰐖",
+						"│",
+					},
+					winhighlight = "Normal:CmpDoc",
+				}),
 			},
 
 			------------------------------------------------------------------
 			-- Experimental features
 			------------------------------------------------------------------
 			experimental = {
-				ghost_text = true,
+				ghost_text = false,
 			},
 		})
 

@@ -7,13 +7,14 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
+				"lua_ls", -- LUA
 				"html", -- HTML
 				"cssls", -- CSS
-				"tailwindcss", -- TAILWIND
 				"ts_ls", -- JAVA SCRIPT
-				"lua_ls", -- LUA
+				"tailwindcss", -- TAILWIND
 				"jdtls", --- JAVA
 				"lemminx", --- XML
+				"clangd", --- c
 			},
 		},
 	},
@@ -24,14 +25,18 @@ return {
 
 				-- FORMATTER
 				"prettierd",
-				"jq",
 				"google-java-format",
+				"prettierd",
 				"stylua",
+				"clang-format",
+				"jq",
 				"pgformatter",
 
 				-- LINTER
+				"luacheck",
 				"checkstyle",
 				"eslint_d",
+				"cpplint",
 				"jsonlint",
 
 				-- TEST

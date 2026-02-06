@@ -56,7 +56,7 @@ local config = {
 	settings = {
 		java = {
 			-- TODO Replace this with the absolute path to your main java version (JDTLS requires JDK 21 or higher)
-			home = "/opt/jdk-25.0.1/",
+			home = "/opt/jdk-25.0.2/",
 
 			cleanup = {
 				actionsOnSave = {
@@ -80,7 +80,7 @@ local config = {
 					},
 					{
 						name = "JavaSE-21",
-						path = "/opt/jdk-21.0.9/",
+						path = "/opt/jdk-21.0.10/",
 					},
 				},
 			},

@@ -1,28 +1,12 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
+	"scottmckendry/cyberdream.nvim",
 	lazy = false,
+	priority = 1000,
 	config = function()
-		require("catppuccin").setup({
-			transparent_background = true,
-
-			custom_highlights = function(colors)
-				return {
-					NormalFloat = { bg = "NONE" },
-					FloatBorder = { bg = "NONE" },
-					Pmenu = { bg = "NONE" },
-					TelescopeNormal = { bg = "NONE" },
-					TelescopeBorder = { bg = "NONE" },
-					NvimTreeNormal = { bg = "NONE" },
-					NeoTreeNormal = { bg = "NONE" },
-					NormalNC = { bg = "NONE" },
-					EndOfBuffer = { bg = "NONE" },
-					SignColumn = { bg = "NONE" },
-				}
-			end,
+		require("cyberdream").setup({
+			transparent = true,
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("cyberdream")
 	end,
 }
