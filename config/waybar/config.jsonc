@@ -8,7 +8,7 @@
   "margin-bottom": 0,
   "margin-left": 0,
 
-  "modules-left": [ "hyprland/workspaces" ],
+  "modules-left": [ "hyprland/workspaces" ,"custom/docker"],
 
   "modules-center": [ "battery", "clock" , "pulseaudio"],
 
@@ -22,6 +22,13 @@
     "persistent-workspaces": { "*": 5 }
   },
 
+"custom/docker": {
+  "exec": "systemctl is-active docker >/dev/null && echo \"\" || echo \"[D]\"",
+  "interval": 5,
+  "tooltip": true,
+  "tooltip-format": "Left: docker ps | Right: toggle docker",
+  "on-click": "~/.config/waybar/scripts/docker.sh"
+},
 
   "battery": {
     "interval": 30,

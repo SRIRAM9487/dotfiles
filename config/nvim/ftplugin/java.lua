@@ -76,7 +76,7 @@ local config = {
 				runtimes = {
 					{
 						name = "JavaSE-25",
-						path = "/opt/jdk-25.0.1/",
+						path = "/opt/jdk-25.0.2/",
 					},
 					{
 						name = "JavaSE-21",

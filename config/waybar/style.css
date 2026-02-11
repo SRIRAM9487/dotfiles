@@ -56,6 +56,13 @@ window#waybar {
   color: @urgent;
 }
 
+#custom-docker {
+  padding: 0 10px;
+  margin: 0 4px;
+  color: @accent;
+  background: transparent;
+}
+
 #battery {
   padding: 2px 5px;
   color: @fg;

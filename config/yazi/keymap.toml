@@ -86,7 +86,8 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go ~/Downloads" },
-	{ on = [ "g", "p" ],       run = "cd ~/dev/project",   desc = "Go ~/Downloads" },
+	{ on = [ "g", "p" ],       run = "cd ~/dev/project",   desc = "Go ~/projects" },
+	{ on = [ "g", "l" ],       run = "cd ~/dev/learn/dsa/leetcode/",   desc = "Go ~/Leetcode" },
 
 	# Tabs
 	{ on = ["t","o"], run = "tab_create --current", desc = "Create a new tab with CWD" },
