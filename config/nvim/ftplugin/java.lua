@@ -128,6 +128,7 @@ local config = {
 				},
 				filteredTypes = {
 					"com.sun.*",
+					"org.apache.*",
 					"sun.*",
 					"jdk.*",
 					-- "java.awt.*",
