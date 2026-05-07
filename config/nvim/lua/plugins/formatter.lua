@@ -20,7 +20,7 @@ return {
 			lua = { "stylua" },
 			json = { "jq" },
 			jsonc = { "jq" },
-			sql = { "pgformatter" },
+			sql = { "pg_format" },
 		},
 	},
 }

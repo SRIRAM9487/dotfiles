@@ -8,7 +8,7 @@
   "margin-bottom": 0,
   "margin-left": 0,
 
-  "modules-left": [ "hyprland/workspaces" ,"custom/docker"],
+  "modules-left": [ "hyprland/workspaces" ],
 
   "modules-center": [ "battery", "clock" , "pulseaudio"],
 
