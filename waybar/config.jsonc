@@ -1,0 +1,85 @@
+{
+  "layer": "top",
+  "position":"top",
+  "spacing": 0,
+  "height": 0,
+  "margin-top": 0,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+
+  "modules-left": [ "hyprland/workspaces" ],
+
+  "modules-center": [ "battery", "clock" ],
+
+  "modules-right": [ "cpu", "memory", "network" , "pulseaudio"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": { "*": 5 }
+  },
+
+"custom/docker": {
+  "exec": "systemctl is-active docker >/dev/null && echo \"\" || echo \"[D]\"",
+  "interval": 5,
+  "tooltip": true,
+  "tooltip-format": "Left: docker ps | Right: toggle docker",
+  "on-click": "~/.config/waybar/scripts/docker.sh"
+},
+
+  "battery": {
+    "interval": 30,
+    "format": "{capacity}%",
+    "format-alt": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-plugged": "🔌 {capacity}% ",
+    "format-full": "󰁹 100%",
+    "format-icons": [ "󰁺",  "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    "states": { "warning": 20, "critical": 10 },
+    "tooltip": true,
+    "tooltip-format": "Charge: {capacity}%\nTime: {time}\nPower: {power} W"
+  },
+
+  "clock": { "format": "{:%H:%M}", "format-alt": "{:%d-%a}", "tooltip": false },
+
+  "pulseaudio": {
+      "format": "[N] {volume}%",
+      "format-bluetooth": "[BLUE] {volume}% ",
+      "format-muted": "[X]",
+      "scroll-step": 1,
+      "on-click": "~/.config/waybar/scripts/bluetooth.sh"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "[CPU] {usage}%",
+    "format-alt": "{avg_frequency} GHz",
+    "states": { "warning": 70, "critical": 90 },
+    "tooltip": true,
+    "tooltip-format": "Usage: {usage}%\nFreq: {avg_frequency} GHz\nLoad: {load}"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "[MEM] {percentage}%",
+    "format-alt": "{used:0.1f}G / {total:0.1f}G",
+    "states": { "warning": 70, "critical": 85 },
+    "tooltip": true,
+    "tooltip-format": "Used: {used:0.1f} GB\nAvailable: {avail:0.1f} GB\nTotal: {total:0.1f} GB"
+  },
+
+
+  "network": {
+    "interval": 2,
+    "format-wifi": "↓{bandwidthDownBytes}",
+    "format-ethernet": "{ifname}",
+    "format-disconnected": "no network",
+    "format-linked": "{ifname} (no IP)",
+    "tooltip": true,
+    "tooltip-format": "{ifname}\n{essid} {signalStrength}%\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}\n↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+    "on-click": "~/.config/waybar/scripts/wifi.sh"
+  }
+}
