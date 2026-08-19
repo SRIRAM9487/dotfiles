@@ -1,0 +1,7 @@
+require("config.animation")
+require("config.appearance")
+require("config.autostart")
+require("config.environment")
+require("config.keybinding")
+require("config.monitor")
+require("config.windowrule")
