@@ -77,6 +77,7 @@ alias h="mvn spring-boot:run"
 alias m="javac *.java && java Main"
 alias ta="tmux -u a"
 alias t="tmux"
+alias tk="tmux kill-server"
 alias n="nvim ."
 
 # --------- JAVA -----------
@@ -95,3 +96,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+
+# Created by `pipx` on 2026-08-19 06:19:24
+export PATH="$PATH:/home/sriram/.local/bin"
